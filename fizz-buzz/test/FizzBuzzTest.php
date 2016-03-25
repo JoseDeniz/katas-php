@@ -2,16 +2,16 @@
 
 namespace FizzBuzz\Test;
 
-use FizzBuzz\FizzBuzz;
+use FizzBuzz\FizzBuzzGenerator;
 
 class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
-    public function it_should_test_something()
+    public function should_return_1_given_number_1()
     {
 
-        $fizzBuzz = new FizzBuzz();
+        $fizzBuzz = new FizzBuzzGenerator();
 
-        $this->assertTrue($fizzBuzz->changeMe());
+        $this->assertEquals('1', $fizzBuzz->generateFizzBuzzSequenceUntil(1));
     }
 }
