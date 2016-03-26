@@ -9,8 +9,12 @@ class FizzBuzzGenerator
      * @param int $limit
      * @return string
      */
-    public function generateFizzBuzzSequenceUntil($limit)
+    public static function generateFizzBuzzSequenceUpTo($limit)
     {
-        return ''.$limit;
+        $sequence = "1";
+        if ($limit > 1) {
+            $sequence = $sequence."\n".$limit;
+        }
+        return $sequence;
     }
 }
