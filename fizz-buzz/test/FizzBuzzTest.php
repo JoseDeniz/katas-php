@@ -25,4 +25,10 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals("1\n2\nFizz\n4\nBuzz", FizzBuzzGenerator::generateFizzBuzzSequenceUpTo(5));
     }
+
+    /** @test */
+    public function should_return_fizzbuzz_given_a_number_multiple_of_three_and_five()
+    {
+        $this->assertEquals("1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz", FizzBuzzGenerator::generateFizzBuzzSequenceUpTo(15));
+    }
 }

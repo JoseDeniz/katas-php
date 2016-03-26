@@ -13,7 +13,8 @@ class FizzBuzzGenerator
     {
         $sequence = "";
         for ($i = 1; $i <= $limit; $i++) {
-            if ($i % 5 == 0) $sequence = $sequence."\nBuzz";
+            if ($i % 3 == 0 && $i % 5 == 0) $sequence = $sequence."\nFizzBuzz";
+            else if ($i % 5 == 0) $sequence = $sequence."\nBuzz";
             else if ($i % 3 == 0) $sequence = $sequence."\nFizz";
             else $sequence = $sequence."\n".$i;
         }
