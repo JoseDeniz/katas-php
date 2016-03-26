@@ -11,10 +11,11 @@ class FizzBuzzGenerator
      */
     public static function generateFizzBuzzSequenceUpTo($limit)
     {
-        $sequence = "1";
-        if ($limit > 1) {
-            $sequence = $sequence."\n".$limit;
+        $sequence = "";
+        for ($i = 1; $i <= $limit; $i++) {
+            if ($i % 3 == 0) $sequence = $sequence."\nFizz";
+            else $sequence = $sequence."\n".$i;
         }
-        return $sequence;
+        return trim($sequence);
     }
 }
