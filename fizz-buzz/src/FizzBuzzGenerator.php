@@ -13,11 +13,16 @@ class FizzBuzzGenerator
     {
         $sequence = "";
         for ($i = 1; $i <= $limit; $i++) {
-            if ($i % 3 == 0 && $i % 5 == 0) $sequence = $sequence."\nFizzBuzz";
-            else if ($i % 5 == 0) $sequence = $sequence."\nBuzz";
-            else if ($i % 3 == 0) $sequence = $sequence."\nFizz";
-            else $sequence = $sequence."\n".$i;
+            $sequence = $sequence.self::parseNumber($i);
         }
         return trim($sequence);
+    }
+
+    private static function parseNumber($number)
+    {
+        if ($number % 3 == 0 && $number % 5 == 0) return "\nFizzBuzz";
+        else if ($number % 5 == 0) return "\nBuzz";
+        else if ($number % 3 == 0) return "\nFizz";
+        return "\n".$number;
     }
 }
