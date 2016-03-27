@@ -2,6 +2,8 @@
 
 namespace FizzBuzz;
 
+define('_EMPTY', "");
+
 class FizzBuzzGenerator
 {
 
@@ -11,7 +13,7 @@ class FizzBuzzGenerator
      */
     public static function generateFizzBuzzSequenceUpTo($limit)
     {
-        $sequence = "";
+        $sequence = _EMPTY;
         for ($i = 1; $i <= $limit; $i++)
             $sequence = $sequence.self::parseNumber($i)."\n";
         return trim($sequence);
@@ -20,18 +22,18 @@ class FizzBuzzGenerator
     private static function parseNumber($number)
     {
         $parsedNumber = self::parseIsMultipleOfThree($number).self::parseIsMultipleOfFive($number);
-        return $parsedNumber === "" ? $number : $parsedNumber;
+        return $parsedNumber === _EMPTY ? $number : $parsedNumber;
     }
 
     private static function parseIsMultipleOfThree($number)
     {
         if ($number % 3 == 0) return "Fizz";
-        return "";
+        return _EMPTY;
     }
 
     private static function parseIsMultipleOfFive($number)
     {
         if ($number % 5 == 0) return "Buzz";
-        return "";
+        return _EMPTY;
     }
 }
