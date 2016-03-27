@@ -2,14 +2,13 @@
 
 namespace RomanNumerals\Test;
 
-use RomanNumerals\RomanNumerals;
+use RomanNumerals\RomanNumeralsConverter;
 
 class RomanNumeralsTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
-    public function change_me()
+    public function should_convert_decimal_number_to_roman_number()
     {
-        $romanNumerals = new RomanNumerals();
-        $this->assertTrue($romanNumerals->changeMe());
+        $this->assertEquals("I", RomanNumeralsConverter::convert(1));
     }
 }
