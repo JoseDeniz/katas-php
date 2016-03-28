@@ -26,13 +26,11 @@ class FizzBuzzGenerator
 
     private static function parseIsMultipleOfThree($number)
     {
-        if ($number % 3 == 0) return "Fizz";
-        return self::_EMPTY;
+        return $number % 3 == 0 ? "Fizz" : self::_EMPTY;
     }
 
     private static function parseIsMultipleOfFive($number)
     {
-        if ($number % 5 == 0) return "Buzz";
-        return self::_EMPTY;
+        return $number % 5 == 0 ? "Buzz" : self::_EMPTY;
     }
 }
