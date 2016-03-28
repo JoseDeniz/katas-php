@@ -14,7 +14,7 @@ class FizzBuzzGenerator
     {
         $sequence = self::_EMPTY;
         for ($i = 1; $i <= $limit; $i++)
-            $sequence = $sequence.self::parseNumber($i)."\n";
+            $sequence .= self::parseNumber($i)."\n";
         return trim($sequence);
     }
 
