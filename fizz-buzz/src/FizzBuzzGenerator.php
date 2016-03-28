@@ -2,10 +2,9 @@
 
 namespace FizzBuzz;
 
-define('_EMPTY', "");
-
 class FizzBuzzGenerator
 {
+    const _EMPTY = "";
 
     /**
      * @param int $limit
@@ -13,7 +12,7 @@ class FizzBuzzGenerator
      */
     public static function generateFizzBuzzSequenceUpTo($limit)
     {
-        $sequence = _EMPTY;
+        $sequence = self::_EMPTY;
         for ($i = 1; $i <= $limit; $i++)
             $sequence = $sequence.self::parseNumber($i)."\n";
         return trim($sequence);
@@ -22,18 +21,18 @@ class FizzBuzzGenerator
     private static function parseNumber($number)
     {
         $parsedNumber = self::parseIsMultipleOfThree($number).self::parseIsMultipleOfFive($number);
-        return $parsedNumber === _EMPTY ? $number : $parsedNumber;
+        return $parsedNumber === self::_EMPTY ? $number : $parsedNumber;
     }
 
     private static function parseIsMultipleOfThree($number)
     {
         if ($number % 3 == 0) return "Fizz";
-        return _EMPTY;
+        return self::_EMPTY;
     }
 
     private static function parseIsMultipleOfFive($number)
     {
         if ($number % 5 == 0) return "Buzz";
-        return _EMPTY;
+        return self::_EMPTY;
     }
 }
