@@ -4,7 +4,8 @@ namespace RomanNumerals;
 
 class RomanNumeralsConverter
 {
-    private static $decimalToRoman = [500 => "D",
+    private static $decimalToRoman = [1000 => "M",
+                                      500 => "D",
                                       100 => "C",
                                       50 => "L",
                                       10 => "X",
