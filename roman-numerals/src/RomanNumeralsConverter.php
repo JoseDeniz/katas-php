@@ -12,7 +12,7 @@ class RomanNumeralsConverter
     public static function convertDecimalToRoman($decimalNumber)
     {
         $romanNumber = "";
-        if ($decimalNumber == 10)
+        if ($decimalNumber >= 10)
         {
             $romanNumber .= "X";
             $decimalNumber -= 10;
