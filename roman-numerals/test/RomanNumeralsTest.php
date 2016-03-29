@@ -14,5 +14,7 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("III", RomanNumeralsConverter::convertDecimalToRoman(3));
         $this->assertEquals("V", RomanNumeralsConverter::convertDecimalToRoman(5));
         $this->assertEquals("VIII", RomanNumeralsConverter::convertDecimalToRoman(8));
+        $this->assertEquals("X", RomanNumeralsConverter::convertDecimalToRoman(10));
+
     }
 }
