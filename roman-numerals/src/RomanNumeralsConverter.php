@@ -11,8 +11,12 @@ class RomanNumeralsConverter
      */
     public static function convertDecimalToRoman($decimalNumber)
     {
-        if ($decimalNumber == 5) return "V";
         $romanNumber = "";
+        if ($decimalNumber >= 5)
+        {
+            $romanNumber .= "V";
+            $decimalNumber -= 5;
+        }
         for ($i = 0; $i < $decimalNumber; $i++)
         {
             $romanNumber .= "I";
