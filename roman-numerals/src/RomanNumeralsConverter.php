@@ -21,9 +21,6 @@ class RomanNumeralsConverter
                 $decimalNumber -= $decimal;
             }
         }
-        for ($i = 0; $i < $decimalNumber; $i++) {
-            $romanNumber .= "I";
-        }
         return $romanNumber;
     }
 }
