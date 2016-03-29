@@ -8,6 +8,7 @@ class RomanNumeralsConverter
                                       500 => "D",
                                       100 => "C",
                                       50 => "L",
+                                      40 => "XL",
                                       10 => "X",
                                       9 => "IX",
                                       5 => "V",
@@ -16,7 +17,7 @@ class RomanNumeralsConverter
 
     /**
      * @param int $decimalNumber
-     * @return bool
+     * @return string
      */
     public static function convertDecimalToRoman($decimalNumber)
     {
