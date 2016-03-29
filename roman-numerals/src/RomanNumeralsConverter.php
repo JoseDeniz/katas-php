@@ -16,7 +16,7 @@ class RomanNumeralsConverter
     {
         $romanNumber = "";
         foreach (self::$decimalToRoman as $decimal => $roman) {
-            if ($decimalNumber >= $decimal) {
+            while ($decimalNumber >= $decimal) {
                 $romanNumber .= $roman;
                 $decimalNumber -= $decimal;
             }
