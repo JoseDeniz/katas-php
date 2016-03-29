@@ -4,6 +4,9 @@ namespace RomanNumerals;
 
 class RomanNumeralsConverter
 {
+    private static $decimalToRoman = [10 => "X",
+                                      5 => "V",
+                                      1 => "I"];
 
     /**
      * @param int $decimalNumber
@@ -12,18 +15,13 @@ class RomanNumeralsConverter
     public static function convertDecimalToRoman($decimalNumber)
     {
         $romanNumber = "";
-        if ($decimalNumber >= 10)
-        {
-            $romanNumber .= "X";
-            $decimalNumber -= 10;
+        foreach (self::$decimalToRoman as $decimal => $roman) {
+            if ($decimalNumber >= $decimal) {
+                $romanNumber .= $roman;
+                $decimalNumber -= $decimal;
+            }
         }
-        if ($decimalNumber >= 5)
-        {
-            $romanNumber .= "V";
-            $decimalNumber -= 5;
-        }
-        for ($i = 0; $i < $decimalNumber; $i++)
-        {
+        for ($i = 0; $i < $decimalNumber; $i++) {
             $romanNumber .= "I";
         }
         return $romanNumber;
