@@ -27,5 +27,9 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("D", RomanNumeralsConverter::convertDecimalToRoman(500));
         $this->assertEquals("CM", RomanNumeralsConverter::convertDecimalToRoman(900));
         $this->assertEquals("M", RomanNumeralsConverter::convertDecimalToRoman(1000));
+
+        $this->assertEquals("MCCXXXIV", RomanNumeralsConverter::convertDecimalToRoman(1234));
+        $this->assertEquals("MMXVI", RomanNumeralsConverter::convertDecimalToRoman(2016));
+        $this->assertEquals("MMMMCCXXXIV", RomanNumeralsConverter::convertDecimalToRoman(4234));
     }
 }
