@@ -9,8 +9,8 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_convert_decimal_number_to_roman_number()
     {
-        $this->assertEquals("I", RomanNumeralsConverter::convert(1));
-        $this->assertEquals("II", RomanNumeralsConverter::convert(2));
-        $this->assertEquals("III", RomanNumeralsConverter::convert(3));
+        $this->assertEquals("I", RomanNumeralsConverter::convertDecimalToRoman(1));
+        $this->assertEquals("II", RomanNumeralsConverter::convertDecimalToRoman(2));
+        $this->assertEquals("III", RomanNumeralsConverter::convertDecimalToRoman(3));
     }
 }
