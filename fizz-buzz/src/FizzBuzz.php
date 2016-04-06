@@ -37,11 +37,11 @@ class FizzBuzz
 
     private function parseIsMultipleOfThree($number)
     {
-        return $number % 3 == 0 ? "Fizz" : self::_EMPTY;
+        return $number % 3 == 0 ? 'Fizz' : self::_EMPTY;
     }
 
     private function parseIsMultipleOfFive($number)
     {
-        return $number % 5 == 0 ? "Buzz" : self::_EMPTY;
+        return $number % 5 == 0 ? 'Buzz' : self::_EMPTY;
     }
 }
