@@ -16,26 +16,17 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function should_return_fizz_given_a_number_multiple_of_three()
+    public function should_be_numbers_those_who_are_not_divisible_by_three_or_five()
     {
-        $this->markTestSkipped();
+        $fizzBuzz = new FizzBuzz();
+        $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertEquals("1\n2\nFizz", $fizzBuzz->generateFizzBuzzSequenceUpTo(3));
+        $testNumber1 = 1;
+        $this->assertEquals($testNumber1, $sequence[$testNumber1 - 1]);
+        $testNumber2 = 2;
+        $this->assertEquals($testNumber2, $sequence[$testNumber2 - 1]);
+        $testNumber44 = 42;
+        $this->assertEquals($testNumber44, $sequence[$testNumber44 - 1]);
     }
 
-    /** @test */
-    public function should_return_buzz_given_a_number_multiple_of_five()
-    {
-        $this->markTestSkipped();
-
-        $this->assertEquals("1\n2\nFizz\n4\nBuzz", $fizzBuzz->generateFizzBuzzSequenceUpTo(5));
-    }
-
-    /** @test */
-    public function should_return_fizzbuzz_given_a_number_multiple_of_three_and_five()
-    {
-        $this->markTestSkipped();
-
-        $this->assertEquals("1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz", $fizzBuzz->generateFizzBuzzSequenceUpTo(15));
-    }
 }
