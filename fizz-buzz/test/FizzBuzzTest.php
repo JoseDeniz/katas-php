@@ -26,6 +26,16 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $this->assertIsSameNumber(98, $sequence);
     }
 
+    /** @test */
+    public function should_be_fizz_those_numbers_who_are_divisible_by_three()
+    {
+        $fizzBuzz = new FizzBuzz();
+        $sequence = $fizzBuzz->generateFizzBuzzSequence();
+
+        $number3 = 3;
+        $this->assertEquals('Fizz', $sequence[$number3 - 1]);
+        $number6 = 6;
+        $this->assertEquals('Fizz', $sequence[$number6 - 1]);
     }
 
     /**

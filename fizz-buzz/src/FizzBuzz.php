@@ -11,7 +11,10 @@ class FizzBuzz
 
     public function generateFizzBuzzSequence()
     {
-        return range(self::FROM_ONE, self::TO_ONE_HUNDRED);
+        $sequence = range(self::FROM_ONE, self::TO_ONE_HUNDRED);
+        return array_map(function($number) {
+            return $this->parseNumber($number);
+        }, $sequence);
     }
 
     /**
