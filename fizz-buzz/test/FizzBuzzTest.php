@@ -6,7 +6,6 @@ use FizzBuzz\FizzBuzz;
 
 class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
-
     /** @test */
     public function should_return_a_sequence_of_100_elements()
     {
@@ -62,7 +61,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     private function assertIsSameNumber($number, $sequence)
     {
-        $this->assertEquals($number, $sequence[$number - 1]);
+        $this->assertEquals($number, $this->get($number)->from($sequence));
     }
 
     /**
@@ -71,7 +70,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     protected function assertIsFizz($number, $sequence)
     {
-        $this->assertEquals('Fizz', $sequence[$number - 1]);
+        $this->assertEquals('Fizz', $this->get($number)->from($sequence));
     }
 
     /**
@@ -80,7 +79,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     protected function assertIsBuzz($number, $sequence)
     {
-        $this->assertEquals('Buzz', $sequence[$number - 1]);
+        $this->assertEquals('Buzz', $this->get($number)->from($sequence));
     }
 
     /**
@@ -89,7 +88,26 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     protected function assertIsFizzBuzz($number, $sequence)
     {
-        $this->assertEquals('FizzBuzz', $sequence[$number - 1]);
+        $this->assertEquals('FizzBuzz', $this->get($number)->from($sequence));
     }
 
+    private function get($number)
+    {
+        return new Finder($number);
+    }
+}
+
+class Finder
+{
+    private $number;
+
+    public function __construct($number)
+    {
+        $this->number = $number;
+    }
+
+    public function from($sequence)
+    {
+        return $sequence[$this->number - 1];
+    }
 }
