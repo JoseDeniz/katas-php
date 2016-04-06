@@ -32,10 +32,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $number3 = 3;
-        $this->assertEquals('Fizz', $sequence[$number3 - 1]);
-        $number6 = 6;
-        $this->assertEquals('Fizz', $sequence[$number6 - 1]);
+        $this->assertIsFizz(3, $sequence);
+        $this->assertIsFizz(6, $sequence);
     }
 
     /**
@@ -45,6 +43,15 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     private function assertIsSameNumber($number, $sequence)
     {
         $this->assertEquals($number, $sequence[$number - 1]);
+    }
+
+    /**
+     * @param $number
+     * @param $sequence
+     */
+    protected function assertIsFizz($number, $sequence)
+    {
+        $this->assertEquals('Fizz', $sequence[$number - 1]);
     }
 
 }
