@@ -4,7 +4,7 @@ namespace FizzBuzz;
 
 class FizzBuzz
 {
-    const _EMPTY = "";
+    const _EMPTY = '';
     const FROM_ONE = 1;
     const TO_ONE_HUNDRED = 100;
 
