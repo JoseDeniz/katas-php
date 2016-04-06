@@ -16,7 +16,7 @@ class FizzBuzz
     private function parseNumber()
     {
         return function ($number) {
-            $parsedNumber = self::parseIsMultipleOfThree($number).self::parseIsMultipleOfFive($number);
+            $parsedNumber = $this->parseIsMultipleOfThree($number).$this->parseIsMultipleOfFive($number);
             return $parsedNumber === self::_EMPTY ? $number : $parsedNumber;
         };
     }

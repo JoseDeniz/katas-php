@@ -36,6 +36,16 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $this->assertIsFizz(6, $sequence);
     }
 
+    /** @test */
+    public function should_be_buzz_those_numbers_who_are_divisible_by_five()
+    {
+        $fizzBuzz = new FizzBuzz();
+        $sequence = $fizzBuzz->generateFizzBuzzSequence();
+
+        $this->assertIsBuzz(5, $sequence);
+        $this->assertIsBuzz(10, $sequence);
+    }
+
     /**
      * @param $number
      * @param $sequence
@@ -52,6 +62,15 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     protected function assertIsFizz($number, $sequence)
     {
         $this->assertEquals('Fizz', $sequence[$number - 1]);
+    }
+
+    /**
+     * @param $number
+     * @param $sequence
+     */
+    protected function assertIsBuzz($number, $sequence)
+    {
+        $this->assertEquals('Buzz', $sequence[$number - 1]);
     }
 
 }
