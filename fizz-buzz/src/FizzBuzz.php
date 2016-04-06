@@ -6,9 +6,12 @@ class FizzBuzz
 {
     const _EMPTY = "";
 
+    const FROM_ONE = 1;
+    const TO_ONE_HUNDRED = 100;
+
     public function generateFizzBuzzSequence()
     {
-        return range(1, 100);
+        return range(self::FROM_ONE, self::TO_ONE_HUNDRED);
     }
 
     /**

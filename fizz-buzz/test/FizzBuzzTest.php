@@ -10,7 +10,6 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_return_a_sequence_of_100_elements()
     {
-
         $fizzBuzz = new FizzBuzz();
 
         $this->assertCount(100, $fizzBuzz->generateFizzBuzzSequence());
