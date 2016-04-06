@@ -23,7 +23,9 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 
         $this->assertIsSameNumber(1, $sequence);
         $this->assertIsSameNumber(2, $sequence);
-        $this->assertIsSameNumber(42, $sequence);
+        $this->assertIsSameNumber(98, $sequence);
+    }
+
     }
 
     /**
