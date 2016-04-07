@@ -43,6 +43,14 @@ class BackStageItemTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $item->quality);
     }
 
+    /** @test */
+    public function backstage_never_passes_a_quality_of_fifty()
+    {
+        $item = new Item('Backstage passes to a TAFKAL80ETC concert', 12, 50);
+        $this->updateQualityFor($item);
+        $this->assertEquals(50, $item->quality);
+    }
+
     private function updateQualityFor($item)
     {
         $gildedRose = new GildedRose([$item]);
