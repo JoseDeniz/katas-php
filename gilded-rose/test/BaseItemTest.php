@@ -19,6 +19,14 @@ class BaseItemTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(6, $item->quality);
     }
 
+    /** @test */
+    public function base_item_quality_is_never_a_negative_value()
+    {
+        $item = new Item('AnyItem', 0, 0);
+        $this->updateQualityFor($item);
+        $this->assertEquals(0, $item->quality);
+    }
+
     private function updateQualityFor($item)
     {
         $gildedRose = new GildedRose([$item]);
