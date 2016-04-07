@@ -1,0 +1,27 @@
+<?php
+
+namespace GildedRose\Test;
+
+use GildedRose\GildedRose;
+use GildedRose\Item;
+
+class BaseItemTest extends \PHPUnit_Framework_TestCase
+{
+
+    /** @test */
+    public function
+    base_item_quality_decrease_twice_as_fast_when_sellIn_expires()
+    {
+        $item = new Item('AnyItem', 0, 10);
+        $this->updateQualityFor($item);
+        $this->assertEquals(8, $item->quality);
+        $this->updateQualityFor($item);
+        $this->assertEquals(6, $item->quality);
+    }
+
+    private function updateQualityFor($item)
+    {
+        $gildedRose = new GildedRose([$item]);
+        $gildedRose->update_quality();
+    }
+}
