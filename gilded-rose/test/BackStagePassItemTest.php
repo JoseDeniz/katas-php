@@ -36,4 +36,14 @@ class BackStageItemTest extends \PHPUnit_Framework_TestCase
         $this->gildedRose->update_quality();
         $this->assertEquals(22, $this->items[0]->quality);
     }
+
+    /** @test */
+    public function
+    backstage_pass_increase_its_quality_when_sellIn_is_lower_than_five_and_greater_than_zero_by_three()
+    {
+        $this->items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20)];
+        $this->gildedRose = new GildedRose($this->items);
+        $this->gildedRose->update_quality();
+        $this->assertEquals(23, $this->items[0]->quality);
+    }
 }
