@@ -11,47 +11,41 @@ class BackStageItemTest extends \PHPUnit_Framework_TestCase
     public function
     backstage_pass_increase_its_quality_when_sellIn_is_greater_than_ten_by_one()
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 12, 20)];
-        $gildedRose = $this->gildedRoseFor($items);
-        $gildedRose->update_quality();
-        $this->assertEquals(21, $items[0]->quality);
+        $item = new Item('Backstage passes to a TAFKAL80ETC concert', 12, 20);
+        $this->updateQualityFor($item);
+        $this->assertEquals(21, $item->quality);
     }
 
     /** @test */
     public function
     backstage_pass_increase_its_quality_when_sellIn_is_greater_than_five_and_lower_than_ten_by_two()
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 8, 20)];
-        $gildedRose = $this->gildedRoseFor($items);
-        $gildedRose->update_quality();
-        $this->assertEquals(22, $items[0]->quality);
+        $item = new Item('Backstage passes to a TAFKAL80ETC concert', 8, 20);
+        $this->updateQualityFor($item);
+        $this->assertEquals(22, $item->quality);
     }
 
     /** @test */
     public function
     backstage_pass_increase_its_quality_when_sellIn_is_lower_than_five_and_greater_than_zero_by_three()
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20)];
-        $gildedRose = $this->gildedRoseFor($items);
-        $gildedRose->update_quality();
-        $this->assertEquals(23, $items[0]->quality);
+        $item = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20);
+        $this->updateQualityFor($item);
+        $this->assertEquals(23, $item->quality);
     }
 
     /** @test */
     public function
     backstage_pass_quality_is_zero_when_sellIn_expires()
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20)];
-        $gildedRose = $this->gildedRoseFor($items);
-        $gildedRose->update_quality();
-        $this->assertEquals(0, $items[0]->quality);
+        $item = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20);
+        $this->updateQualityFor($item);
+        $this->assertEquals(0, $item->quality);
     }
 
-    /**
-     * @return GildedRose
-     */
-    private function gildedRoseFor($items)
+    private function updateQualityFor($item)
     {
-        return new GildedRose($items);
+        $gildedRose = new GildedRose([$item]);
+        $gildedRose->update_quality();
     }
 }
