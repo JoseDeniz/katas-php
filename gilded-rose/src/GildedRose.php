@@ -15,7 +15,7 @@ class GildedRose
     function update_quality()
     {
         foreach ($this->items as $item) {
-            $this->foo($item);
+            $this->updateQualityFor($item);
 
             $this->decrementSellInFor($item);
 
@@ -40,7 +40,7 @@ class GildedRose
     /**
      * @param $item
      */
-    private function foo($item)
+    private function updateQualityFor($item)
     {
         if (!$this->isSulfuras($item) and $item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
             if ($item->quality > 0) {
