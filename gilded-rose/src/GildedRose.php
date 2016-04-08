@@ -57,8 +57,13 @@ class GildedRose
     private function increaseQualityOfAgedBrieAndBackstagePass($item)
     {
         if ($item->quality < 50) {
-            $item->quality = $item->quality + 1;
-            $this->increaseQualityOfBackstage($item);
+            if ($item->name == 'Aged Brie') {
+                $this->increaseQualityFor($item);
+            }
+
+            if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
+                $this->increaseQualityOfBackstage($item);
+            }
         }
     }
 
@@ -67,14 +72,22 @@ class GildedRose
      */
     private function increaseQualityOfBackstage($item)
     {
-        if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-            if ($item->sell_in < 11) {
-                $item->quality = $item->quality + 1;
-            }
-            if ($item->sell_in < 6) {
-                $item->quality = $item->quality + 1;
-            }
+        $this->increaseQualityFor($item);
+        if ($item->sell_in < 11) {
+            $this->increaseQualityFor($item);
         }
+        if ($item->sell_in < 6) {
+            $this->increaseQualityFor($item);
+        }
+
+    }
+
+    /**
+     * @param $item Item
+     */
+    private function increaseQualityFor($item)
+    {
+        $item->quality++;
     }
 
     /**
