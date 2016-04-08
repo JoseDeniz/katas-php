@@ -25,6 +25,14 @@ class AgedBrieItemTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(50, $item->quality);
     }
 
+    /** @test */
+    public function aged_brie_increases_its_quality_twice_as_fast_when_sellIn_expires()
+    {
+        $item = new Item(self::AGED_BRIE, 0, 10);
+        $this->updateQualityFor($item);
+        $this->assertEquals(12, $item->quality);
+    }
+
     private function updateQualityFor($item)
     {
         $gildedRose = new GildedRose([$item]);
