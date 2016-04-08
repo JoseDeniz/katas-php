@@ -69,7 +69,7 @@ class GildedRose
     {
         if ($item->quality < 50) {
             if ($item->name == 'Aged Brie') {
-                $this->increaseQualityFor($item);
+                $this->increaseQualityOfAgedBrie($item);
             }
 
             if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
@@ -89,6 +89,9 @@ class GildedRose
         }
         if ($item->sell_in < 6) {
             $this->increaseQualityFor($item);
+        }
+        if($item->sell_in <= 0) {
+            $item->quality = 0;
         }
 
     }
@@ -118,5 +121,16 @@ class GildedRose
     private function isSulfuras($item)
     {
         return $item->name == 'Sulfuras, Hand of Ragnaros';
+    }
+
+    /**
+     * @param $item
+     */
+    private function increaseQualityOfAgedBrie($item)
+    {
+        $this->increaseQualityFor($item);
+        if ($item->sell_in <= 0) {
+            $this->increaseQualityFor($item);
+        }
     }
 }
