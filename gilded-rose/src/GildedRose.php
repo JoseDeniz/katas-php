@@ -14,9 +14,13 @@ class GildedRose
 
     function update_quality()
     {
+        /** @var Item $item */
         foreach ($this->items as $item) {
-            $this->updateQualityFor($item);
-            $this->decrementSellInFor($item);
+            $baseItem = new BaseItem($item->name, $item->sell_in, $item->quality);
+            $this->updateQualityFor($baseItem);
+            $this->decrementSellInFor($baseItem);
+            $item->sell_in = $baseItem->sell_in;
+            $item->quality = $baseItem->quality;
         }
     }
 
@@ -25,24 +29,11 @@ class GildedRose
      */
     private function updateQualityFor($item)
     {
-        if (!$this->isSulfuras($item) and $item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-            if ($item->quality > 0) {
-                $this->decreaseQualityOf($item);
-                if ($item->sell_in <= 0) {
-                    $this->decreaseQualityOf($item);
-                }
-            }
+        if ($this->isBaseItem($item)) {
+            $item->updateQuality();
         } else {
             $this->increaseQualityOfAgedBrieAndBackstagePass($item);
         }
-    }
-
-    /**
-     * @param $item Item
-     */
-    private function decreaseQualityOf($item)
-    {
-        $item->quality = $item->quality - 1;
     }
 
     /**
