@@ -47,7 +47,17 @@ class GildedRose
                 $item->quality = $item->quality - 1;
             }
         } else {
-            if ($item->quality < 50) {
+            $this->increaseQualityOfAgedBrieAndBackstagePass($item);
+        }
+    }
+
+    /**
+     * @param $item Item
+     */
+    private function increaseQualityOfAgedBrieAndBackstagePass($item)
+    {
+        if ($item->quality < 50) {
+            $item->quality = $item->quality + 1;
                 $item->quality = $item->quality + 1;
                 if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
                     if ($item->sell_in < 11) {
