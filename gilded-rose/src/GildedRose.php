@@ -116,4 +116,13 @@ class GildedRose
             $this->increaseQualityFor($item);
         }
     }
+
+    /**
+     * @param $item
+     * @return bool
+     */
+    private function isBaseItem($item)
+    {
+        return !$this->isSulfuras($item) and $item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert';
+    }
 }
