@@ -20,9 +20,12 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertIsSameNumber(1, $sequence);
-        $this->assertIsSameNumber(2, $sequence);
-        $this->assertIsSameNumber(98, $sequence);
+        $number1 = 1;
+        $this->assertIsSameNumber($number1, $this->get($number1)->from($sequence));
+        $number2 = 2;
+        $this->assertIsSameNumber($number2, $this->get($number2)->from($sequence));
+        $number98 = 98;
+        $this->assertIsSameNumber($number98, $this->get($number98)->from($sequence));
     }
 
     /** @test */
@@ -31,8 +34,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertIsFizz(3, $sequence);
-        $this->assertIsFizz(6, $sequence);
+        $this->assertIsFizz($this->get(3)->from($sequence));
+        $this->assertIsFizz($this->get(6)->from($sequence));
     }
 
     /** @test */
@@ -41,8 +44,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertIsBuzz(5, $sequence);
-        $this->assertIsBuzz(10, $sequence);
+        $this->assertIsBuzz($this->get(5)->from($sequence));
+        $this->assertIsBuzz($this->get(10)->from($sequence));
     }
 
     /** @test */
@@ -51,44 +54,41 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertIsFizzBuzz(15, $sequence);
-        $this->assertIsFizzBuzz(30, $sequence);
+        $this->assertIsFizzBuzz($this->get(15)->from($sequence));
+        $this->assertIsFizzBuzz($this->get(30)->from($sequence));
+    }
+
+    /**
+     * @param $expected
+     * @param $actual
+     */
+    private function assertIsSameNumber($expected, $actual)
+    {
+        $this->assertEquals($expected, $actual);
     }
 
     /**
      * @param $number
-     * @param $sequence
      */
-    private function assertIsSameNumber($number, $sequence)
+    protected function assertIsFizz($number)
     {
-        $this->assertEquals($number, $this->get($number)->from($sequence));
+        $this->assertEquals('Fizz', $number);
     }
 
     /**
      * @param $number
-     * @param $sequence
      */
-    protected function assertIsFizz($number, $sequence)
+    protected function assertIsBuzz($number)
     {
-        $this->assertEquals('Fizz', $this->get($number)->from($sequence));
+        $this->assertEquals('Buzz', $number);
     }
 
     /**
      * @param $number
-     * @param $sequence
      */
-    protected function assertIsBuzz($number, $sequence)
+    protected function assertIsFizzBuzz($number)
     {
-        $this->assertEquals('Buzz', $this->get($number)->from($sequence));
-    }
-
-    /**
-     * @param $number
-     * @param $sequence
-     */
-    protected function assertIsFizzBuzz($number, $sequence)
-    {
-        $this->assertEquals('FizzBuzz', $this->get($number)->from($sequence));
+        $this->assertEquals('FizzBuzz', $number);
     }
 
     private function get($number)
