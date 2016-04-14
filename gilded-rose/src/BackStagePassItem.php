@@ -5,7 +5,6 @@ namespace GildedRose;
 
 class BackStagePassItem extends BaseItem
 {
-
     /**
      * BackStagePassItem constructor.
      * @param $item Item
@@ -18,13 +17,21 @@ class BackStagePassItem extends BaseItem
     public function updateQuality()
     {
         $this->increaseQuality();
-        if ($this->item->sell_in < 11) {
+        $this->increaseQualityWhenSellInIsLowerThan(11);
+        $this->increaseQualityWhenSellInIsLowerThan(6);
+        $this->setQualityToZeroWhenSellInExpires();
+    }
+
+    private function increaseQualityWhenSellInIsLowerThan($sellInDays)
+    {
+        if ($this->item->sell_in < $sellInDays) {
             $this->increaseQuality();
         }
-        if ($this->item->sell_in < 6) {
-            $this->increaseQuality();
-        }
-        if($this->item->sell_in <= 0) {
+    }
+
+    private function setQualityToZeroWhenSellInExpires()
+    {
+        if ($this->item->sell_in <= 0) {
             $this->item->quality = 0;
         }
     }
