@@ -25,53 +25,11 @@ class GildedRose
     }
 
     /**
-     * @param $item Item
+     * @param $item BaseItem
      */
     private function updateQualityFor($item)
     {
-        if ($this->isBaseItem($item) || $this->isSulfuras($item) || $this->isAgedBrie($item)) {
-            $item->updateQuality();
-        } else {
-            $this->increaseQualityOfAgedBrieAndBackstagePass($item);
-        }
-    }
-
-    /**
-     * @param $item Item
-     */
-    private function increaseQualityOfAgedBrieAndBackstagePass($item)
-    {
-        if ($item->quality < 50) {
-            if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                $this->increaseQualityOfBackstage($item);
-            }
-        }
-    }
-
-    /**
-     * @param $item Item
-     */
-    private function increaseQualityOfBackstage($item)
-    {
-        $this->increaseQualityFor($item);
-        if ($item->sell_in < 11) {
-            $this->increaseQualityFor($item);
-        }
-        if ($item->sell_in < 6) {
-            $this->increaseQualityFor($item);
-        }
-        if($item->sell_in <= 0) {
-            $item->quality = 0;
-        }
-
-    }
-
-    /**
-     * @param $item Item
-     */
-    private function increaseQualityFor($item)
-    {
-        $item->quality++;
+        $item->updateQuality();
     }
 
     /**
@@ -93,32 +51,4 @@ class GildedRose
         return $item->name == 'Sulfuras, Hand of Ragnaros';
     }
 
-    /**
-     * @param $item
-     */
-    private function increaseQualityOfAgedBrie($item)
-    {
-        $this->increaseQualityFor($item);
-        if ($item->sell_in <= 0) {
-            $this->increaseQualityFor($item);
-        }
-    }
-
-    /**
-     * @param $item
-     * @return bool
-     */
-    private function isBaseItem($item)
-    {
-        return !$this->isSulfuras($item) && !$this->isAgedBrie($item) && $item->name != 'Backstage passes to a TAFKAL80ETC concert';
-    }
-
-    /**
-     * @param $item
-     * @return bool
-     */
-    private function isAgedBrie($item)
-    {
-        return $item->name == 'Aged Brie';
-    }
 }
