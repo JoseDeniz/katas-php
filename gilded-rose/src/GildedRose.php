@@ -9,16 +9,22 @@ class GildedRose
 
     function __construct($items)
     {
-        $this->items = $items;
+        $this->items = $this->factoryItems($items);
     }
 
     function update_quality()
     {
-        /** @var Item $item */
+        /** @var BaseItem $item */
         foreach ($this->items as $item) {
-            $baseItem = ItemFactory::create($item);
-            $baseItem->update();
+            $item->update();
         }
+    }
+
+    private function factoryItems($items)
+    {
+        return array_map(function ($item) {
+            return ItemFactory::create($item);
+        }, $items);
     }
 
 }
