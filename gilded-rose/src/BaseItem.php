@@ -18,7 +18,7 @@ class BaseItem
 
     protected function updateQuality()
     {
-        if ($this->item->quality > 0) {
+        if ($this->isQualityGreaterThanZero()) {
             $this->decreaseQuality();
             if ($this->item->sell_in <= 0) {
                 $this->decreaseQuality();
@@ -28,7 +28,7 @@ class BaseItem
 
     protected function decreaseQuality()
     {
-        if ($this->item->quality > 0) {
+        if ($this->isQualityGreaterThanZero()) {
             $this->item->quality = $this->item->quality - 1;
         }
     }
@@ -43,5 +43,13 @@ class BaseItem
     protected function decreaseSellIn()
     {
         $this->item->sell_in = $this->item->sell_in - 1;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isQualityGreaterThanZero()
+    {
+        return $this->item->quality > 0;
     }
 }
