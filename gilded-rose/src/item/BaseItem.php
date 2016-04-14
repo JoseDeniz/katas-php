@@ -60,4 +60,12 @@ class BaseItem
     {
         return $this->item->sell_in;
     }
+
+    /**
+     * @param $value
+     */
+    protected function setSellIn($value)
+    {
+        $this->item->quality = $value;
+    }
 }

@@ -24,17 +24,15 @@ class BackStagePassItem extends BaseItem
 
     private function increaseQualityWhenSellInIsLowerThan($sellInDays)
     {
-        if ($this->item->sell_in < $sellInDays) {
+        if ($this->getSellIn() < $sellInDays) {
             $this->increaseQuality();
         }
     }
 
     private function setQualityToZeroWhenSellInExpires()
     {
-        if ($this->item->sell_in <= 0) {
-            $this->item->quality = 0;
+        if ($this->getSellIn() <= 0) {
+            $this->setSellIn(0);
         }
     }
-
-
 }
