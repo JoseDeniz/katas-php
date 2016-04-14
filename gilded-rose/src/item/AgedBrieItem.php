@@ -17,9 +17,14 @@ class AgedBrieItem extends BaseItem
     public function updateQuality()
     {
         $this->increaseQuality();
+        $this->increaseQualityWhenSellInDateExpires();
+    }
+
+    protected function increaseQualityWhenSellInDateExpires()
+    {
         if ($this->getSellIn() <= 0) {
             $this->increaseQuality();
         }
     }
-    
+
 }
