@@ -29,7 +29,7 @@ class GildedRose
      */
     private function updateQualityFor($item)
     {
-        if ($this->isBaseItem($item)) {
+        if ($this->isBaseItem($item) || $this->isSulfuras($item)) {
             $item->updateQuality();
         } else {
             $this->increaseQualityOfAgedBrieAndBackstagePass($item);
@@ -114,6 +114,6 @@ class GildedRose
      */
     private function isBaseItem($item)
     {
-        return !$this->isSulfuras($item) and $item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert';
+        return !$this->isSulfuras($item) && $item->name != 'Aged Brie' && $item->name != 'Backstage passes to a TAFKAL80ETC concert';
     }
 }
