@@ -10,6 +10,7 @@ class ItemFactory
     public static function create($item)
     {
         if (self::isSulfuras($item)) return new SulfurasItem($item->name, $item->sell_in, $item->quality);
+        if (self::isAgedBrie($item)) return new AgedBrieItem($item->name, $item->sell_in, $item->quality);
         return new BaseItem($item->name, $item->sell_in, $item->quality);
     }
 
