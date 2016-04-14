@@ -21,11 +21,11 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
         $number1 = 1;
-        $this->assertIsSameNumber($number1, $this->get($number1)->from($sequence));
+        $this->assertIsSameNumber($number1, $this->getNumber($number1)->from($sequence));
         $number2 = 2;
-        $this->assertIsSameNumber($number2, $this->get($number2)->from($sequence));
+        $this->assertIsSameNumber($number2, $this->getNumber($number2)->from($sequence));
         $number98 = 98;
-        $this->assertIsSameNumber($number98, $this->get($number98)->from($sequence));
+        $this->assertIsSameNumber($number98, $this->getNumber($number98)->from($sequence));
     }
 
     /** @test */
@@ -34,8 +34,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertIsFizz($this->get(3)->from($sequence));
-        $this->assertIsFizz($this->get(6)->from($sequence));
+        $this->assertIsFizz($this->getNumber(3)->from($sequence));
+        $this->assertIsFizz($this->getNumber(6)->from($sequence));
     }
 
     /** @test */
@@ -44,8 +44,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertIsBuzz($this->get(5)->from($sequence));
-        $this->assertIsBuzz($this->get(10)->from($sequence));
+        $this->assertIsBuzz($this->getNumber(5)->from($sequence));
+        $this->assertIsBuzz($this->getNumber(10)->from($sequence));
     }
 
     /** @test */
@@ -54,8 +54,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $sequence = $fizzBuzz->generateFizzBuzzSequence();
 
-        $this->assertIsFizzBuzz($this->get(15)->from($sequence));
-        $this->assertIsFizzBuzz($this->get(30)->from($sequence));
+        $this->assertIsFizzBuzz($this->getNumber(15)->from($sequence));
+        $this->assertIsFizzBuzz($this->getNumber(30)->from($sequence));
     }
 
     /**
@@ -91,7 +91,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('FizzBuzz', $number);
     }
 
-    private function get($number)
+    private function getNumber($number)
     {
         return new Finder($number);
     }
