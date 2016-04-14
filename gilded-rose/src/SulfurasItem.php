@@ -28,5 +28,10 @@ class SulfurasItem extends BaseItem
         return;
     }
 
+    protected function decreaseSellIn()
+    {
+        return;
+    }
+
 
 }

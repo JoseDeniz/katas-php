@@ -4,7 +4,13 @@ namespace GildedRose;
 
 class BaseItem extends Item
 {
-    public function updateQuality()
+
+    public function update() {
+        $this->updateQuality();
+        $this->decreaseSellIn();
+    }
+
+    protected function updateQuality()
     {
         if ($this->quality > 0) {
             $this->decreaseQuality();
@@ -13,7 +19,7 @@ class BaseItem extends Item
             }
         }
     }
-    
+
     protected function decreaseQuality()
     {
         if ($this->quality > 0) {
@@ -26,5 +32,10 @@ class BaseItem extends Item
         if ($this->quality < 50) {
             $this->quality = $this->quality + 1;
         }
+    }
+
+    protected function decreaseSellIn()
+    {
+        $this->sell_in = $this->sell_in - 1;
     }
 }
