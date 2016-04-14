@@ -52,4 +52,12 @@ class BaseItem
     {
         return $this->item->quality > 0;
     }
+
+    /**
+     * @return mixed
+     */
+    protected function getSellIn()
+    {
+        return $this->item->sell_in;
+    }
 }
