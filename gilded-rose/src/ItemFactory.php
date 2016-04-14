@@ -3,18 +3,19 @@
 namespace GildedRose;
 
 
-use GildedRose\Test\BackStageTest;
-
 class ItemFactory
 {
 
-    /** @param $item Item */
+    /** 
+     * @param $item Item
+     * @return BaseItem
+     */
     public static function create($item)
     {
-        if (self::isSulfuras($item)) return new SulfurasItem($item->name, $item->sell_in, $item->quality);
-        if (self::isAgedBrie($item)) return new AgedBrieItem($item->name, $item->sell_in, $item->quality);
-        if (self::isBackstagePass($item)) return new BackStagePassItem($item->name, $item->sell_in, $item->quality);
-        return new BaseItem($item->name, $item->sell_in, $item->quality);
+        if (self::isSulfuras($item)) return new SulfurasItem($item);
+        if (self::isAgedBrie($item)) return new AgedBrieItem($item);
+        if (self::isBackstagePass($item)) return new BackStagePassItem($item);
+        return new BaseItem($item);
     }
 
     /**

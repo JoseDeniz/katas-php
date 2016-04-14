@@ -18,8 +18,6 @@ class GildedRose
         foreach ($this->items as $item) {
             $baseItem = ItemFactory::create($item);
             $baseItem->update();
-            $item->sell_in = $baseItem->sell_in;
-            $item->quality = $baseItem->quality;
         }
     }
 
