@@ -13,15 +13,15 @@ class BaseItem extends Item
             }
         }
     }
-
-    public function decreaseQuality()
+    
+    protected function decreaseQuality()
     {
         if ($this->quality > 0) {
             $this->quality = $this->quality - 1;
         }
     }
 
-    public function increaseQuality()
+    protected function increaseQuality()
     {
         if ($this->quality < 50) {
             $this->quality = $this->quality + 1;
