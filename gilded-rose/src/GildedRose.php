@@ -16,7 +16,7 @@ class GildedRose
     {
         /** @var Item $item */
         foreach ($this->items as $item) {
-            $baseItem = new BaseItem($item->name, $item->sell_in, $item->quality);
+            $baseItem = ItemFactory::create($item);
             $this->updateQualityFor($baseItem);
             $this->decrementSellInFor($baseItem);
             $item->sell_in = $baseItem->sell_in;
